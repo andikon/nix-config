@@ -11,6 +11,7 @@
 	fzf
 	tree
 	htop
+	stow
 	unzip
 	zip
 	gnupg
@@ -48,6 +49,7 @@
 	lutris
 	bitwarden-desktop
 	bitwarden-cli
+	spotify
   ] ++ [
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
