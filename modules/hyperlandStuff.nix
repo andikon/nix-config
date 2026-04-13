@@ -38,10 +38,12 @@
     hypridle
     hyprlock
 
-    # Bar / launcher / notifications
     waybar
     wofi
-    mako
+    swaynotificationcenter
+
+    blueman
+    networkmanagerapplet
 
     # Clipboard
     wl-clipboard
@@ -61,11 +63,10 @@
     pamixer
 
     # Fonts (important for waybar/icons)
-    nerd-fonts.fira-code
+
 
     # Debugging Wayland issues
     wayland-utils
-    glxinfo
   ];
 
   # Environment variables (fix common Wayland issues)
@@ -85,5 +86,6 @@
   # Ensure fonts
   fonts.packages = with pkgs; [
     nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
   ];
 }

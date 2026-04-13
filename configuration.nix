@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
 
     ./modules/system.nix
+    ./modules/hyperlandStuff.nix
     ./modules/desktop.nix
     ./modules/fonts.nix
     ./modules/nvidia.nix
