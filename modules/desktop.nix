@@ -8,6 +8,7 @@
 
 
   services.xserver.xkb.layout = "us";
+  services.xserver.xkb.variant = "de_se_fi";
 
   services.printing.enable = true;
 

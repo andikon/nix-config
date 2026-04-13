@@ -40,6 +40,7 @@
 
     waybar
     wofi
+    walker
     swaynotificationcenter
 
     blueman

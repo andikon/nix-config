@@ -42,6 +42,7 @@
 	zoxide
 
 ## Gui Stuff
+    thunar
 	winboat
 	ghostty
 	discord
