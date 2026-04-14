@@ -29,6 +29,8 @@
 	amp-cli
 	gh
 	github-copilot-cli
+    fastfetch
+    libnotify
 
 
 ## --- Build / Dev essentials ---

@@ -37,6 +37,9 @@
     hyprpaper
     hypridle
     hyprlock
+    hyprpicker
+
+    cava
 
     waybar
     wofi
@@ -54,6 +57,7 @@
     grim
     slurp
     swappy
+    flameshot
 
     # Audio control
     pavucontrol
