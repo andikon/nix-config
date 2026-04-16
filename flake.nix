@@ -20,9 +20,13 @@
       specialArgs = { inherit inputs; };
       modules = [ ./configuration.nix ];
     };
-    packages.x86_64-linux.cli-packages = pkgs.symlinkJoin {
+    packages.x86_64-linux.cli-packages = pkgs.buildEnv {
       name = "cli-packages";
-      paths = cliPackages;
+      paths = import ./modules/packages.nix {
+        inherit pkgs;
+        config = {};
+        inputs = inputs;
+      };
     };
   };
 }
