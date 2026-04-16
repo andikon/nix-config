@@ -1,7 +1,7 @@
 { config, pkgs, inputs, ... }:
 
-{
-  environment.systemPackages = with pkgs; [
+let
+  cliPackages = with pkgs; [
      ## --- Core CLI ---
   	git
 	wget
@@ -31,6 +31,9 @@
 	github-copilot-cli
     fastfetch
     libnotify
+    jdt-language-server
+    javaPackages.compiler.openjdk21
+
 
 
 ## --- Build / Dev essentials ---
@@ -58,5 +61,14 @@
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
+in
+{
+  environment.systemPackages = cliPackages ++ (with pkgs; [
+    ## Gui Stuff
+    thunar winboat ghostty discord steam lutris bitwarden-desktop bitwarden-cli spotify easyeffects
+  ]);
+
   virtualisation.docker.enable = true;
+  _module.args.cliPackages = cliPackages;
 }
+
