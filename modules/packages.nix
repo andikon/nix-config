@@ -2,6 +2,7 @@
 
 let
   cliPackages = with pkgs; [
+    bash  
   	git
 	wget
 	curl
