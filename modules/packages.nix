@@ -43,7 +43,7 @@ let
 	docker-compose
 	amp-cli
     libnotify
-  ]
+  ];
 
   guiPackages = with pkgs; [
     thunar
