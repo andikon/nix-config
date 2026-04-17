@@ -12,21 +12,28 @@
 
   outputs = inputs@{ self, nixpkgs, ... }: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; };
-    cliPackages = (import ./modules/packages.nix { inherit pkgs inputs; }).cliPackages;
+    pkgs = import nixpkgs { 
+      inherit system; 
+      config = { 
+        allowUnfree = true; 
+      }; 
+    };
+
+    packagesHelper = import ./modules/packages.nix { inherit pkgs inputs; };
   in {
-    nixosConfigurations.devSystem = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
       system = system;
       specialArgs = { inherit inputs; };
-      modules = [ ./configuration.nix ];
+      modules = [ ./configuration.nix packagesHelper.module ];
     };
-    packages.x86_64-linux.cli-packages = pkgs.buildEnv {
-      name = "cli-packages";
-      paths = import ./modules/packages.nix {
-        inherit pkgs;
-        config = {};
-        inputs = inputs;
+
+    packages.${system} = {
+      cli-packages = pkgs.buildEnv {
+        name = "my-cli-tools";
+        paths = packagesHelper.cliPackages;
       };
+      
+      default = self.packages.${system}.cli-packages;
     };
   };
 }

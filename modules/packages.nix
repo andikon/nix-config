@@ -1,8 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 let
   cliPackages = with pkgs; [
-     ## --- Core CLI ---
   	git
 	wget
 	curl
@@ -22,31 +21,31 @@ let
 	tmux
 	vim
 	neovim
-	vulkan-tools
-	stow
-	docker
-	docker-compose
-	amp-cli
 	gh
 	github-copilot-cli
     fastfetch
-    libnotify
     jdt-language-server
     javaPackages.compiler.openjdk21
+	zoxide
+    gitfetch
 
 
-
-## --- Build / Dev essentials ---
 	gcc
 	gnumake
 	pkg-config
 	cmake
 	just
+  ];
 
-## --- Search / navigation helpers ---
-	zoxide
+  osCLiPackages = with pkgs; [
+	vulkan-tools
+	docker
+	docker-compose
+	amp-cli
+    libnotify
+  ]
 
-## Gui Stuff
+  guiPackages = with pkgs; [
     thunar
 	winboat
 	ghostty
@@ -57,18 +56,19 @@ let
 	bitwarden-cli
 	spotify
 	easyeffects
-  ] ++ [
+  ];
+
+  specialStuff = [
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
 in
 {
-  environment.systemPackages = cliPackages ++ (with pkgs; [
-    ## Gui Stuff
-    thunar winboat ghostty discord steam lutris bitwarden-desktop bitwarden-cli spotify easyeffects
-  ]);
-
-  virtualisation.docker.enable = true;
-  _module.args.cliPackages = cliPackages;
+  cliPackages = cliPackages;
+  
+  module = { ... }: {
+    environment.systemPackages = cliPackages ++ osCLiPackages ++ guiPackages ++ specialStuff;
+    virtualisation.docker.enable = true;
+  };
 }
 
