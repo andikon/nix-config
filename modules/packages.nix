@@ -25,11 +25,18 @@ let
 	gh
 	github-copilot-cli
     fastfetch
-    jdt-language-server
-    javaPackages.compiler.openjdk21
 	zoxide
     gitfetch
 
+    jdk
+    jdk21
+    jdt-language-server
+    maven
+
+    nodejs
+    typescript
+    typescript-language-server
+    angular-language-server
 
 	gcc
 	gnumake
