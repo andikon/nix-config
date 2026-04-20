@@ -27,11 +27,16 @@ let
     fastfetch
 	zoxide
     gitfetch
+    yazi
 
     jdk
     jdk21
     jdt-language-server
     maven
+    lua-language-server
+    typescript-language-server
+    angular-language-server
+    tailwindcss-language-server
 
     nodejs
     typescript

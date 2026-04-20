@@ -38,6 +38,7 @@
     hypridle
     hyprlock
     hyprpicker
+    hyprshutdown
 
     cava
 
