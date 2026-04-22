@@ -16,10 +16,21 @@
 
   networking.networkmanager.enable = true;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+        default = "saved";
+        enable = true;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
+    };
+  };
+
+  time.hardwareClockInLocalTime = true;
 
   hardware.bluetooth.enable = true;
+
 
   system.stateVersion = "25.11";
 }
